@@ -1,1 +1,1 @@
-console.log("Arrow Function");
+console.log("Arrow Functions");
