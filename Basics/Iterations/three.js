@@ -1,4 +1,4 @@
-//  for of loop
+//  for of loop (most used in Arrays)
 
 // ["", "", ""]
 // [{}, {}, {}]
