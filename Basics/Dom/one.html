@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom learning </title>
+</head>
+<body style="background-color: #212121;  color: #fff;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thrusday</div>
+    </div>
+    <script>
+        const parent = document.querySelector(".parent")
+        // console.log(parent)
+        // console.log(parent.children)
+        // console.log(parent.children[3].textContent)
+
+        // for (let i = 0; i < parent.children.length; i++) {
+        //     console.log(parent.children[i].textContent);
+        // }
+
+        for (let j = 0; j < parent.children.length; j++) {
+            parent.children[j].style.color = "red";
+            parent.children[j].style.backgroundColor = "white";
+            parent.children[j].style.textAlign = "center";
+            parent.children[j].style.fontWeight = "bold";
+            parent.children[j].style.border = "2px solid white";
+            parent.children[j].style.borderRadius = "10px";
+            parent.children[j].style.margin = "10px";
+            parent.children[j].style.padding = "4px";
+        }
+
+        // console.log(parent.firstElementChild.innerHTML);
+        // console.log(parent.lastElementChild.innerHTML);
+
+        const day = document.querySelector(".day");
+        // console.log(day.nextElementSibling.innerHTML)
+        // day.parentElement.style.backgroundColor =  "purple"
+
+
+        console.log(parent.childNodes)
+
+    </script>
+
+</body>
+</html>
