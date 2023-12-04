@@ -1,1 +1,48 @@
-console.log("sameer")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    function addNewLang(langName){
+        let li = document.createElement('li');
+        li.innerHTML = `${langName}` // not a  optimized way to add a new languages
+        const lang = document.querySelector(".language")
+        lang.appendChild(li);
+    }
+
+    addNewLang("Python")
+    addNewLang("Typescript")
+    addNewLang("Java")
+
+    // Adda new laguage using optimized way
+    function addLanguages(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguages("GoLang")
+    addLanguages("C++")
+    addLanguages("C#")
+    addLanguages("C")
+
+    // edit a new language
+    const firstLang = document.querySelector('li:first-child');
+    const newLi = document.createElement('li');
+    newLi.textContent = "Python"
+    firstLang.replaceWith(newLi)
+
+
+    // remove a new language
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+
+</script>
+</html>
