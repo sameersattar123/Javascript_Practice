@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Async code</title>
 </head>
 <body>
-    
+        <h1>Sameer Sattar Shaikh</h1>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+
+        <script>
+            const myTime = function (name) {
+                console.log(name , Date.now())
+            }
+
+            
+            const start = document.querySelector("#start").addEventListener("click" , () => {
+                const  intervalId = setInterval(myTime , 1000 , "sameer");
+            })
+
+            const stop = document.querySelector("#stop").addEventListener("click" , () => {
+                clearInterval(setInterval(myTime , 1000 , "sameer"))
+            })
+
+
+
+        </script>
 </body>
 </html>
