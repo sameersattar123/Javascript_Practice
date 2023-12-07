@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Async code</title>
 </head>
 <body>
-    
+    <h1>Sameer Sattar Shaikh</h1>
+    <button id="stop">Stop</button>
+
+    <script>
+        const hiKashif = function(){
+            console.log("Kashif Ahmed")
+        }
+
+        const changeMe =  function(){
+            document.querySelector("h1").innerHTML = "Kashif Ahmed"
+        }
+        const stopText = setTimeout(changeMe, 2000);
+
+        document.getElementById("stop").addEventListener("click" , () => {
+            clearTimeout(stopText);
+            console.log("stopped")
+        })
+        
+    </script>
 </body>
 </html>
