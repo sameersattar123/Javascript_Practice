@@ -6,6 +6,23 @@
     <title>Bind concept</title>
 </head>
 <body>
-    
+    <button>Clicked Button</button>
 </body>
+<script>
+    class React {
+        constructor(){
+            this.library = "REACT"
+            this.server = "https://localhost:3000"
+
+            document.querySelector("button").addEventListener("click" ,this.handleClick.bind(this))
+        }
+        handleClick(){
+            console.log("button clicked")
+            console.log(this.server)
+            console.log(this.library)
+        }
+    }
+
+    const app = new React();
+</script>
 </html>
