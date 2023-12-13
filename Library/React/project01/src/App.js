@@ -7,7 +7,9 @@ const App = () => {
     <>
       <div>
         <Chai />
-        sameer sattar
+       <h1 className= "text-3xl font-bold underline">
+         sameer sattar
+        </h1>
         <Counter/>
       </div>
     </>
