@@ -2,7 +2,7 @@ import React from 'react'
 
 const Chai = () => {
   return (
-    <div>Chai</div>
+    <div>Chai with sameer</div>
   )
 }
 
