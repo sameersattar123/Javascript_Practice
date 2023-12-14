@@ -3,6 +3,7 @@ import Chai from "./Chai";
 import Counter from "./Counter";
 import Card from "./components/Card";
 import BgChanger from "./components/BgChanger";
+import RandomPasswordGenerator from "./components/RandomPasswordGenerator";
 
 const App = () => {
   return (
@@ -20,6 +21,9 @@ const App = () => {
       </div>
       <div>
         <BgChanger/>
+      </div>
+      <div>
+        <RandomPasswordGenerator/>
       </div>
         </>
   );
