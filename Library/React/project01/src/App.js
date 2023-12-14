@@ -6,6 +6,8 @@ import BgChanger from "./components/BgChanger";
 import RandomPasswordGenerator from "./components/RandomPasswordGenerator";
 import { InputBox } from "./components/CurrencyConverter";
 import useCurrencyInfo from "./components/Hooks/useCurrencyInfo";
+import Profile from "./components/Profile";
+import Login from "./components/Login";
 
 const App = () => {
 
@@ -93,6 +95,11 @@ const App = () => {
                     </form>
                 </div>
             </div>
+        </div>
+        <div>
+          <h1>Welcome to Our Context Api Testing App</h1>
+                        <Login/>
+                        <Profile/>
         </div>
         </>
   );
