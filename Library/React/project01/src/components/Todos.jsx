@@ -11,8 +11,8 @@ return (
     <ul className="list-none">
         {todos.map((todo) => (
           <li
-            className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
-            key={todo.id}
+          key={todo.id}
+          className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
           >
             <div className='text-white'>{todo.text}</div>
             <button
