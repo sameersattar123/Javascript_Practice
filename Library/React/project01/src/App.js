@@ -14,6 +14,8 @@ import MainCard from "./components/MainCard";
 import { TodoContextProvider } from "./components/Context/TodoContext";
 import TodoItem from "./components/TodoItem";
 import TodoForm from "./components/TodoForm";
+import AddTodo from "./components/AddTodo";
+import Todos from "./components/Todos";
 
 const App = () => {
   const [themeMode, setThemeMode] = useState("light")
@@ -182,6 +184,10 @@ const App = () => {
                 </div>
             </div>
         </TodoContextProvider>
+      </div>
+      <div>
+        <AddTodo/>
+        <Todos/>
       </div>
     </>
   );
