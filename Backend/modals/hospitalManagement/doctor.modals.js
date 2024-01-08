@@ -21,7 +21,7 @@ const DoctorSchema = new mongoose.Schema(
     workInHospitals: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Hospital",
+        ref: "Hospital"
       },
     ],
   },
