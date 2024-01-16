@@ -4,6 +4,24 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { User } from "../modals/youtube/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
+const generateAccessAndRefereshTokens = async (userId) => {
+  try {
+    const user = await User.findById(userId);
+    const accessToken = user.generateAccessToken();
+    const refreshToken = user.generateRefreshToken();
+
+    user.refreshToken = refreshToken;
+    await user.save({ validateBeforeSave: false });
+
+    return { accessToken, refreshToken };
+  } catch (error) {
+    throw new ApiError(
+      500,
+      "Something went wrong while generating refresh and access token"
+    );
+  }
+};
+
 const registerUser = asyncHandler(async (req, res) => {
   // *** Algorithm for Register a user ****
   // get user details from frontend
@@ -39,7 +57,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const avatarLocalPath = req.files?.avatar[0]?.path;
   const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
-  if (!avatarLocalPath) {  
+  if (!avatarLocalPath) {
     throw new ApiError(400, "Avatar feild is required");
   }
 
@@ -49,7 +67,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (!avatar) {
     throw new ApiError(400, "Avatar feild is require");
-  } 
+  }
 
   // create user creation -  create entry in db
   const user = await User.create({
@@ -59,7 +77,7 @@ const registerUser = asyncHandler(async (req, res) => {
     avatar: avatar.url,
     fullname,
     coverImage: coverImage?.url || "",
-  }); 
+  });
 
   // remove password and refresh token from response
   const createdUser = await User.findById(user._id).select(
@@ -76,39 +94,45 @@ const registerUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, createdUser, "User registered successfully"));
 });
 
-const loginUser = asyncHandler(async (req,res) => {
+const loginUser = asyncHandler(async (req, res) => {
   // **** Algorithm for Login a user ****
   // req body --> data
-  // username or email 
-  // find the user 
-  // password check 
-  // access or refresh token 
+  // username or email
+  // find the user
+  // password check
+  // access or refresh token
   // send cookie
 
-  const { username , email  , password} = req.body
 
+  // req body --> data
+  const { username, email, password } = req.body;
+
+  // username or email
   if (!username || !email) {
-    throw new ApiResponse(400 , "username or email is required")
+    throw new ApiResponse(400, "username or email is required");
   }
 
+  // find the user
   const user = await User.findOne({
-    $or : [{username} , {email}]
-})
+    $or: [{ username }, { email }],
+  });
 
-if (!user) {
-  throw new ApiResponse(404 , "User does not exits") 
-}
+  if (!user) {
+    throw new ApiResponse(404, "User does not exits");
+  }
 
-const isPasswordValid = await user.isPasswordCorrect(password)
+  // password check
+  const isPasswordValid = await user.isPasswordCorrect(password);
 
-if (!isPasswordValid) {
-  throw new ApiResponse(401 , "Invalid Credentials") 
-}
+  if (!isPasswordValid) {
+    throw new ApiResponse(401, "Invalid Credentials");
+  }
 
+  // access or refresh token
+  const {accessToken , refreshToken} = await generateAccessAndRefereshTokens(user._id)
 
+  // send cookie
 
+});
 
-
-})
-
-export { registerUser , loginUser };
+export { registerUser, loginUser };
