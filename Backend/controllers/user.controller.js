@@ -87,9 +87,25 @@ const loginUser = asyncHandler(async (req,res) => {
 
   const { username , email  , password} = req.body
 
-  if (username || email) {
+  if (!username || !email) {
     throw new ApiResponse(400 , "username or email is required")
   }
+
+  const user = await User.findOne({
+    $or : [{username} , {email}]
+})
+
+if (!user) {
+  throw new ApiResponse(404 , "User does not exits") 
+}
+
+const isPasswordValid = await user.isPasswordCorrect(password)
+
+if (!isPasswordValid) {
+  throw new ApiResponse(401 , "Invalid Credentials") 
+}
+
+
 
 
 
