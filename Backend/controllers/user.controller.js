@@ -134,6 +134,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // send cookie
   console.log("sameer")
+  console.log("sameer")
 
 });
 
