@@ -103,7 +103,6 @@ const loginUser = asyncHandler(async (req, res) => {
   // access or refresh token
   // send cookie
 
-
   // req body --> data
   const { username, email, password } = req.body;
 
@@ -129,13 +128,39 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   // access or refresh token
-  const {accessToken , refreshToken} = await generateAccessAndRefereshTokens(user._id)
-  // const {accessToken , refreshToken} = await generateAccessAndRefereshTokens(user._id)
+  const { accessToken, refreshToken } = await generateAccessAndRefereshTokens(
+    user._id
+  );
 
-  // send cookie
-  console.log("sameer")
-  console.log("sameer")
+  // send cookies
+  const loggedInUser = await User.findById(user._id).select(
+    "-password -refreshToken"
+  );
 
+  const options = {
+    httpOnly: true,
+    secure: true,
+  };
+
+  return res
+    .status(200)
+    .cookie("accessToken", accessToken, options)
+    .cookie("refreshToken", refreshToken, options)
+    .json(
+      ApiResponse(
+        200,
+        {
+          user: loggedInUser,
+          accessToken,
+          refreshToken,
+        },
+        "User logged In SuccessFully"
+      )
+    );
 });
+
+const  logoutUser = asyncHandler(async ( res, req , next) => {
+    
+})
 
 export { registerUser, loginUser };
