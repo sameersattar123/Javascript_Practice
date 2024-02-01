@@ -42,7 +42,7 @@ const registerUser = asyncHandler(async (req, res) => {
     [fullname, email, username, password].some((field) => field?.trim() === "")
   ) {
     throw new ApiError(400, "All feilds are required");
-  }
+  } 
 
   // check if user already exits: username / email
   const existedUser = await User.findOne({
@@ -66,7 +66,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const coverImage = await uploadOnCloudinary(coverImageLocalPath);
 
   if (!avatar) {
-    throw new ApiError(400, "Avatar feild is require");
+    throw new ApiError(400, "Avatar feild is required");
   }
 
   // create user creation -  create entry in db
@@ -107,7 +107,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
   // username or email
-  if (!username || !email) {
+  if (!( username || email)) {
     throw new ApiResponse(400, "username or email is required");
   }
 
@@ -120,13 +120,13 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new ApiResponse(404, "User does not exits");
   }
 
-  // password check
+  // password check 
   const isPasswordValid = await user.isPasswordCorrect(password);
-
+ 
   if (!isPasswordValid) {
-    throw new ApiResponse(401, "Invalid Credentials");
+    throw new ApiResponse(401, "Invalid Credentials"); 
   }
-
+  
   // access or refresh token
   const { accessToken, refreshToken } = await generateAccessAndRefereshTokens(
     user._id
@@ -147,7 +147,7 @@ const loginUser = asyncHandler(async (req, res) => {
     .cookie("accessToken", accessToken, options)
     .cookie("refreshToken", refreshToken, options)
     .json(
-      ApiResponse(
+      new ApiResponse(
         200,
         {
           user: loggedInUser,
@@ -156,8 +156,8 @@ const loginUser = asyncHandler(async (req, res) => {
         },
         "User logged In SuccessFully"
       )
-    );
-});
+    )
+}); 
 
 const  logoutUser = asyncHandler(async ( res, req , next) => {
   await User.findByIdAndUpdate(
@@ -190,5 +190,7 @@ const  logoutUser = asyncHandler(async ( res, req , next) => {
       )
     );
 })
+
+
 
 export { registerUser, loginUser , logoutUser };
