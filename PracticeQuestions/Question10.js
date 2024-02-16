@@ -11,3 +11,7 @@ if (num3 > num2 && num3 > num1) {
 } else {
   console.log(`${num1} is a largest number among three numbers`);
 }
+
+// 2nd Method
+const largest = Math.max(num1 , num2 , num3)
+console.log(`${largest} is a largest number among three numbers`)
