@@ -3,6 +3,7 @@
 
 const person = {
     name: 'John',
+    marks: { math: 66, english: 73},
     age: 21,
 }
 
@@ -13,6 +14,8 @@ console.log(clonePerson)
 
 clonePerson.name = "sameer sattar"
 clonePerson.age = 67;
+clonePerson.marks.english = 67;
 
 console.log(person.name)
 console.log(clonePerson.name)
+console.log(clonePerson.marks.english)
