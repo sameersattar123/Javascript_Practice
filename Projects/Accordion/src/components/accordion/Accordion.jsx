@@ -19,7 +19,7 @@ export const Accordion = () => {
     if (findIndexOfCurrentId === -1) {
         CopyMultiple.push(id)
     } else {
-        CopyMultiple.splice(id,1)
+        CopyMultiple.splice(findIndexOfCurrentId,1)
     }
 
     setMultiple(CopyMultiple)
