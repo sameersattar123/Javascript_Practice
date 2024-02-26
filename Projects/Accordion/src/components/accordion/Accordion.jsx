@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Accordion.css";
 import data from "./data";
 
-export const Accordion = () => {
+const Accordion = () => {
   const [selected, setSelected] = useState(null);
   const [enableMultiSelection, setEnableMultiSelection] = useState(false)
   const [multiple, setMultiple] = useState([])
@@ -56,3 +56,5 @@ export const Accordion = () => {
     </>
   );
 };
+
+export default Accordion
