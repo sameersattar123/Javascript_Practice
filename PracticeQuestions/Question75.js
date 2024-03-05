@@ -47,3 +47,13 @@ console.log(stack.size());
 
 stack.clear();
 console.log(stack.items);
+
+
+// In the above program, the Stack class is created to implement the stack data structure. The class methods like add(), remove(), peek(), isEmpty(), size(), clear() are implemented.
+
+// An object stack is created using a new operator and various methods are accessed through the object.
+
+// Here, initially this.items is an empty array.
+// The push() method adds an element to this.items.
+// The pop() method removes the last element from this.items.
+// The length property gives the length of this.items.
