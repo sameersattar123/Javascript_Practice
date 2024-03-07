@@ -3,6 +3,7 @@ class Queue {
     constructor(){
         this.items = {};
         this.headIndex = 0
+        this.headIndex = 0
         this.lastIndex = 0
     }
 
