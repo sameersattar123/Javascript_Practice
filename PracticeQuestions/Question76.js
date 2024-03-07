@@ -3,31 +3,41 @@ class Queue {
     constructor(){
         this.items = {};
         this.headIndex = 0
-        this.headIndex = 0
-        this.lastIndex = 0
+        this.tailIndex = 0
     }
 
     //adds a new element
-    enqueue(){
-        
+    enqueue(element){
+        this.items[this.tailIndex] = element;
+        this.tailIndex++
     }
     //removes an element from head of the queue
     dequeue(){
-
+        let removeElement  = this.items[this.headIndex] 
+        delete this.items[this.headIndex] 
+        this.headIndex++
+        return removeElement
     }
 
     size(){
-
+        return this.tailIndex - this.headIndex
     }
     isEmpty(){
-
+        if (this.tailIndex - this.headIndex === 0) {
+            return true            
+        } else {
+            return false
+        }
     }
     lastElement(){
-
+        let lastElement = this.items[this.headIndex] 
+        return lastElement
     }
 
     clear(){
-
+        this.items = {};
+        this.headIndex = 0
+        this.tailIndex = 0
     }
 }
 
