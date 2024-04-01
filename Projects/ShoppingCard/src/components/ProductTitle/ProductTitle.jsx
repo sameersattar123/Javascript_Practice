@@ -1,8 +1,10 @@
 import React from 'react'
 
-const ProductTitle = () => {
+const ProductTitle = ({item}) => {
   return (
-    <div>ProductTitle</div>
+    <div>
+        
+    </div>
   )
 }
 
