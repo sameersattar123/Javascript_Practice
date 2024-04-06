@@ -1,8 +1,9 @@
 import React from "react";
 import AddTransactions from "../AddTransactions/AddTransactions";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import TransitionChart from "../Chart/Chart";
 
-const Summary = ({isOpen , isClose , totalExpense , totalIncome}) => {
+const Summary = ({isOpen , onClose , totalExpense , totalIncome}) => {
   return (
     <Box
       p="6"
@@ -78,14 +79,14 @@ const Summary = ({isOpen , isClose , totalExpense , totalIncome}) => {
           justifyContent={"center"}
         >
           <Heading>
-            <TransactionChartSummary
-              expense={totalExpense}
-              income={totalIncome}
+            <TransitionChart
+            income={600}
+            expense={400}
             />
           </Heading>
         </Box>
       </Flex>
-      <AddTransactions/>
+      <AddTransactions onClose={onClose} isOpen={isOpen}/>
     </Box>
   );
 };
