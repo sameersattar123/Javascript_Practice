@@ -1,10 +1,33 @@
 import { Flex, Heading, Button, useDisclosure } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Summary from "../Summary/Summary";
 import ExpenseView from "../ExpenseView/ExpenseView";
+import { GlobalContext } from "../../Context";
 
 const Main = () => {
-  const {isOpen , onClose , onOpen } = useDisclosure()
+  const { isOpen, onClose, onOpen } = useDisclosure();
+
+  const {
+    totalIncome,
+    setTotalIncome,
+    totalExpense,
+    setTotalExpense,
+    allTransaction,
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    let income = 0;
+    let expense = 0;
+
+    allTransaction.forEach((item) =>{
+      item.type === "income"
+        ? (income = income + parseFloat(item.amount))
+        : (expense = expense + parseFloat(item.amount))
+  });
+
+  setTotalExpense(expense)
+  setTotalIncome(income)
+  }, [allTransaction]);
 
   return (
     <Flex textAlign={"center"} flexDirection={"column"} pr={"5"} pl={"5"}>
@@ -21,7 +44,12 @@ const Main = () => {
           </Button>
         </Flex>
       </Flex>
-      <Summary onClose={onClose} isOpen={isOpen} />
+      <Summary
+        totalExpense={totalExpense}
+        totalIncome={totalIncome}
+        onClose={onClose}
+        isOpen={isOpen}
+      />
       <Flex
         w="full"
         alignItems={"flex-start"}

@@ -36,7 +36,7 @@ const Summary = ({isOpen , onClose , totalExpense , totalIncome}) => {
           mr={"2"}
         >
           <Heading size={"md"} mb={"4"} color={"gray.600"}>
-            Balance is 100
+            Balance is $ {totalIncome - totalExpense}
           </Heading>
           <Flex
             justifyContent={"space-evenly"}
@@ -80,8 +80,8 @@ const Summary = ({isOpen , onClose , totalExpense , totalIncome}) => {
         >
           <Heading>
             <TransitionChart
-            income={600}
-            expense={400}
+            income={totalIncome}
+            expense={totalExpense}
             />
           </Heading>
         </Box>

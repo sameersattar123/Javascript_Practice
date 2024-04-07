@@ -11,12 +11,24 @@ import {
   Radio,
   RadioGroup,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../Context";
 
 const AddTransactions = ({ isOpen, onClose }) => {
+  const { formData, setformData, value, setValue, handleFormSubmit } =
+    useContext(GlobalContext);
+
+  const handleFormChange = (e) => {
+    setformData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleFormSubmit(formData);
+  };
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Add New Transaction</ModalHeader>
@@ -28,6 +40,7 @@ const AddTransactions = ({ isOpen, onClose }) => {
                 placeholder="Enter Transaction description"
                 name="description"
                 type="text"
+                onChange={handleFormChange}
               />
             </FormControl>
             <FormControl>
@@ -36,13 +49,26 @@ const AddTransactions = ({ isOpen, onClose }) => {
                 placeholder="Enter Transaction amount"
                 name="amount"
                 type="number"
+                onChange={handleFormChange}
               />
             </FormControl>
-            <RadioGroup mt={"5"}>
-              <Radio value="income" name="type" colorScheme="green">
+            <RadioGroup mt={"5"} value={value} onChange={setValue}>
+              <Radio
+                checked={formData.type == "income"}
+                onChange={handleFormChange}
+                value="income"
+                name="type"
+                colorScheme="green"
+              >
                 Income
               </Radio>
-              <Radio value="expense" name="type" colorScheme="red">
+              <Radio
+                value="expense"
+                onChange={handleFormChange}
+                name="type"
+                colorScheme="red"
+                checked={formData.type == "expense"}
+              >
                 Expense
               </Radio>
             </RadioGroup>
@@ -51,7 +77,9 @@ const AddTransactions = ({ isOpen, onClose }) => {
             <button mr={"4"} onClick={onClose}>
               Cancel
             </button>
-            <button>Add</button>
+            <button onClick={onClose} type="submit">
+              Add
+            </button>
           </ModalFooter>
         </ModalContent>
       </form>
