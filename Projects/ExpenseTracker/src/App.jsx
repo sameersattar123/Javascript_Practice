@@ -12,6 +12,7 @@ const App = () => {
           w={["20%", "30%", "20%", "50%", "60%"]}
         >
           <Main/>
+          <Main/>
         </Box>
       </Flex>
     </Container>
