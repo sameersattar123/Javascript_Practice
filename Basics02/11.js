@@ -14,3 +14,14 @@ console.log(fruits[0])
 
 // arrays methods
 
+fruits.push('green')
+console.log(fruits)
+let newFruits = fruits.pop()
+console.log(fruits)
+console.log(newFruits)
+
+fruits.unshift('green')
+console.log(fruits)
+let perFruits = fruits.shift()
+console.log(fruits)
+console.log(perFruits)
