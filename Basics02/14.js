@@ -104,4 +104,42 @@ console.log(addAll(1,2,3,4,5,6,7,8,9,10))
 
 // param destructing
 
+const person = {
+  name: 'Sameer',
+  age: 30,
+  city: 'New York'
+}
 
+function printPerson({ name , age , city , address}){
+     console.log(name)  // Sameer
+     console.log(age) // 30 
+     console.log(city) // New York
+     console.log(address) // undefined
+}
+
+printPerson(person)
+
+// callback functions
+
+function func2(name) {
+  console.log('func2')
+  console.log(name)
+}
+function func1(callBack) {
+  console.log('func1')
+  callBack('sameer')
+}
+
+func1(func2)
+
+// functions returning functions
+
+function hello2() {
+  function hello1() {
+    console.log('Hello Sameer')
+  }
+  return hello1;
+}
+
+const ans = hello2()
+ans()
