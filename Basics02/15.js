@@ -135,3 +135,16 @@ console.log(numArr)
 numArr.splice(2,0,3) // ( starting from 2 index , and delete 0 items , and insert 3 at 2 index )
 
 console.log(numArr)
+
+// Iterable ===> strings and array are iterable and object are not iterable
+
+const myName = "sameer";
+for (const name of myName) {
+    console.log(name)
+}
+
+const myArray2 = [1,2,3,4,5];
+
+for (const num of myArray2) {
+    console.log(num)
+}
