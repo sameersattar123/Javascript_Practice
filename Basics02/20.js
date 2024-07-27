@@ -23,3 +23,5 @@ greet.apply(person2 , ['cricket']) // Hello, my name is Sameer2 and I am 232 yea
 greet.apply(person1 , ['cricket']) // Hello, my name is Sameer and I am 23 years old. cricket 
 const myFunc = greet.bind(person1 , 'cricket') 
 myFunc() // Hello, my name is Sameer and I am 23 years old. cricket 
+
+// In Arrow function , this keyword means window object and this keyword is not same working as working to simple function 
