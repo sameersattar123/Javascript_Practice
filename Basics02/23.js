@@ -5,28 +5,34 @@
 
 
 // constructor function
-function userCreator(firstName , lastName , userAge) {
+function UserCreator(firstName , lastName , userAge) {
     this.firstName = firstName
     this.lastName = lastName
     this.userAge = userAge
   }
   
-  userCreator.prototype.sing = function(){
+  UserCreator.prototype.sing = function(){
       return "I'm singing";
   }
   
-  userCreator.prototype.age = function(){
+  UserCreator.prototype.age = function(){
       return `${this.userAge}`
   },
   
-  userCreator.prototype.name = function(){
+  UserCreator.prototype.name = function(){
       return `${this.firstName} ${this.lastName}`
   }
   
-  const user1 = new userCreator("Sameer" , "Sattar" , 20)
-  const user3 = new userCreator("Sameer3" , "Sattar3" , 230)
-  const user2 = new userCreator("Sameer2" , "Sattar2" , 220)
+  const user1 = new UserCreator("Sameer" , "Sattar" , 20)
+  const user3 = new UserCreator("Sameer3" , "Sattar3" , 230)
+  const user2 = new UserCreator("Sameer2" , "Sattar2" , 220)
   
   console.log(user1)
   console.log(user2.sing())
   console.log(user3.age())
+
+ for (const key in user1) {
+    if (user1.hasOwnProperty(key)) {
+        console.log(key) // only print contructor keys
+    }
+ }
