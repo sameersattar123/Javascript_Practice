@@ -12,7 +12,7 @@ function  myFunction1(){
 
 // function expression (case : var)
 var myFunction2 = function (){
-   console.log("this is a function")
+   console.log("this is a functio")
 }
 
 // console.log(myFunction2) // [Function: myFunction]
